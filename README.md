@@ -1,5 +1,7 @@
 # Documentație LineFollower
 
+Documentația pusă la dispoziție de mentorii Freescale pentru (con)cursul *STEM Innovation Challenge* se regăsește în cadrul acestui repository. Oricine poate colabora la îmbunătățirea acesteia, prin crearea și trimiterea unor pull-request-uri. Pentru cei care nu sunt familiari cu pull-request-urile de pe Github, îi rugăm să citească documentația oficială pusă la dispoziție pe internet. Documentația a fost realizată utilizând **LaTeX**.
+
 ## Compiler în Cloud
 Folosind serviciul ShareLatex, ce dispune de un compiler LaTeX în cloud ce permite compilarea și generarea unui nou PDF de fiecare dată când noi modificări sunt aduse în cadrul unui repository Git, se pot compila noi versiuni ale documentației foarte rapid. Așadar, de fiecare dată când o modificare este detectată, compilatorul va produce un nou fișier PDF ca și output, accesibil de la adresa web următoare: https://www.sharelatex.com/github/repos/Mihu90/LineFollower/builds/latest/output.pdf.
 
