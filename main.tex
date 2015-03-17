@@ -122,6 +122,29 @@
 
 \restoregeometry
 
+% Setarile necesare pentru a include cod sursa in cadrul acestei documentatii
+\lstdefinestyle{customc}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{green!40!black},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    numberstyle=\tiny\color{codegray},
+    identifierstyle=\color{blue},
+    belowcaptionskip=1\baselineskip,
+    breaklines=true,
+    language=C,
+    showstringspaces=false,
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
 % Sectiunea "Abstract"
 \input{chapters/abstract.tex}
 
@@ -137,6 +160,15 @@
 
 % Dezvoltarea unei aplicatii in CodeWarrior for MCU
 \input{chapters/eclipse.tex}
+
+% Configurarea componentelor Processor Expert
+\input{chapters/pex.tex}
+
+% Sectiunea de referinte va fi mereu pe o alta pagina
+\newpage
+
+% Dezvoltarea unei aplicatii in CodeWarrior for MCU
+\input{chapters/bibliography.tex}
 
 % Sfarsitul documentului
 \end{document}

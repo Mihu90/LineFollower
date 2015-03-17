@@ -1,0 +1,20 @@
+#include "PE_Const.h"
+#include "IO_Map.h"
+
+/* User includes (#include below this line is not maintained by Processor Expert) */
+#include "un_fisier.h"
+
+  Ki = 0;
+  
+  /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
+  PE_low_level_init();
+  /*** End of Processor Expert internal initialization.                    ***/
+
+[...]
+
+  /* Write your code here */
+  //something;
+
+[...]
+
+  /*** Don't write any code pass this line, or it will be deleted during code generation. ***/ 
