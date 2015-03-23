@@ -39,9 +39,13 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 
+% Pachete necesare pentru desenarea unor figuri pe ecranul utilizatorului
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \usepackage{subfig}
+
+% Importam si pachetul necesar pentru QR code
+\usepackage[]{qrcode}
 
 \definecolor{gray}{RGB}{235,235,235}
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -101,7 +105,7 @@
 \begin{minipage}{0.4\textwidth}
 \begin{flushright}
 \large{\textbf{Revizie document}} \\
-2.0\\
+1.0\\
 \end{flushright}
 \end{minipage}\\[3.0cm]
 
@@ -116,11 +120,10 @@
 \restoregeometry
 
 % Cine a contribuit la acest proiect?
-\newgeometry{margin=5cm}
-\thispagestyle{empty}
-\section*{\centering{Listă de schimbări}}
-
-\restoregeometry
+%\newgeometry{margin=5cm}
+%\thispagestyle{empty}
+%\section*{\centering{Listă de schimbări}}
+%\restoregeometry
 
 % Setarile necesare pentru a include cod sursa in cadrul acestei documentatii
 \lstdefinestyle{customc}{
@@ -163,6 +166,9 @@
 
 % Configurarea componentelor Processor Expert
 \input{chapters/pex.tex}
+
+% Cateva informatii despre componentele hardware utilizate
+\input{chapters/components.tex}
 
 % Sectiunea de referinte va fi mereu pe o alta pagina
 \newpage

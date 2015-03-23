@@ -1,0 +1,3 @@
+// presupunem ca avem un port de intrare cu numele "Bit1".
+while( !Bit1_GetVal() ); // asteapta cat timp este in starea "low"
+// executia ajunge aici atunci cand pinul a trecut in starea "high"

@@ -1,0 +1,11 @@
+Iesire_SetVal();
+...
+Iesire_PutVal(FALSE);
+...
+/* Set input mode. */
+Bit1_SetDir(FALSE);
+...
+/* Set output mode */  
+Bit1_SetDir(TRUE);
+/* Set output value to "0" */
+Bit1_ClrVal();

@@ -1,0 +1,8 @@
+// Presupunem ca avem o ocmponenta PWM1 deja creata.
+PWM1_SetRatio16(32767);
+// Dezactivarea componentei
+PWM1_Disable();
+// Setarea iesirii pe "low"
+PWM1_ClrValue();
+// Activarea componentei
+PWM1_Enable();
