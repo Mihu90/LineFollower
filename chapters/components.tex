@@ -1,5 +1,31 @@
 \chapter{Interacțiunea cu mediul extern}
 
+\section{Interfața serială}
+
+Este foarte probabil ca mulți dintre voi să fi depanat până acum un program software doar prin folosirea metodei clasice și probabil cea mai simplă și intuitivă - folosirea \textit{printf-urilor} (limbajul C) sau a \textit{cout-urilor} dacă sunteți familarizați cu C++. Dacă în cadrul unei aplicați software clasice, ieșirea programului este redată pe un monitor, în cadrul unei aplicații embedded nu avem un astfel de dispozitiv. Cel mult vom avea un LCD. În acest caz, ne propunem să trimitem aceste date către un calculator persoanal prin care le-am putea accesa cu ușurință. Soluția este folosirea unei interfețe seriale. Configurația oferită de către proiectul inițial (folosind \textit{Processor Expert}) are deja configurat[ interfața serială de pe microcontroller.
+
+Aceasta poate fi folosita din programul dezvoltat pe microcontroller prin apelul următoarelor funcții:
+
+\begin{description}
+    \item[void Term1\_SendChar(char\_t Val)] Realizează transmiterea unui singur caracter.
+    \item[void Term1\_SendStr(void *str)] Util pentru transmiterea unui șir de caractere (a unui string).
+    \item[void Term1\_SendNum(int32\_t number)] Util pentru transmiterea unui număr întreg (reprezentat pe 32 de biți).
+\end{description}
+
+\begin{figure}[h!]
+  \vspace{-10pt}
+  \center{\includegraphics[width=0.8 \textwidth]{images/EclipseTerminal.png}}
+  \vspace{-5pt}
+  \caption{\label{fig:CodeWarrior-EclipseTerminal} Accesarea terminalului pus la dispoziție de Eclipse}
+  \vspace{-10pt}
+\end{figure}
+
+În mediul de dezvoltare (Eclipse) se poate folosi un terminal pentru a recepționa datele transmise de către microcontroller prin interfața serială. Acest terminal va trebui accesat ca în figura.
+
+Terminalul va apărea în partea de jos a ecranului în taburile de console. Pentru o comunicare corectă (pentru că terminalul să înțeleagă corect datele trimise), terminalul trebuie configurat după cum urmează:
+
+Portul selectat trebuie să fie portul pe care s-a atașat \textit{OpenSDA} (în Windows, poate fi verificat în \textit{"Device Manager"}, mai exact în \textit{"Ports (COM \& LPT)"}). După configurare, terminalul va trebui conectat la portul cu care comunică. Aceasta se face prin simpla apăsare a butonului de conectare (primul din lista de butoane de tip iconițe ale ferestrei "Terminal" ce apare în partea de jos a Eclipse-ului).
+
 \section{Senzori cu infraroșu}
 
 Pentru a putea detecta diferența dintre linia neagră și fundalul alb al traseului, robotul \textit{Zumo} folosește o matrice de senzori cu infraroșu. Acești senzori pot măsura cantitatea de lumina reflectată de diferite suprafațe, în funcție de proprietățile acesteia. Cum funcționează? Foarte simplu. O diodă emite radiații în spectrul infraroșu spre suprafața din dreptul senzorului și o parte mai mică sau mai mare din această lumina va fi absorbită de suprafață. Ce ne interesează pe noi este cantitea de lumina reflectată ce va fi masurată cu ajutorul unui fototranzistor și al unui condensator.

@@ -1,0 +1,10 @@
+Function Main_Function()
+{
+    Initialization();
+    Do_Forever {
+        Check_Status();
+        Do_Calculations();
+        Output_Response();
+        Delay_For_Next_Loop();
+    }
+}
