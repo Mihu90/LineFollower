@@ -1,27 +1,28 @@
 \chapter{Componente Processor Expert}
 
 \section{Porturi de intrare și ieșire}
-Cu ajutorul componentei \textit{BitIO} din Processor Expert putem accesa porturi de intrare și iesire ale microcontrollerului, folosind pinii configurabili ai acestuia. O astfel de componentă este caracterizată de un nume, de un pin al microcontrollerului pe care este mapată, o direcție (portul poate fi de intrare sau de ieșire) și valoarea inițiala, în cazul pinilor configurați pentru ieșire. 
 
-\begin{figure}[h!]
-  \vspace{-20pt}
-  \center{\includegraphics[width=0.5 \textwidth]{images/BitIO.png}}
-  \vspace{-15pt}
-  \caption{\label{fig:CodeWarrior-BitIO} Configurarea unui port de intrare / ieșire}
-  \vspace{-20pt}
-\end{figure}
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \vspace{-30pt}
+    \center{\includegraphics[width=0.5 \textwidth]{images/BitIO.png}}
+    \vspace{-15pt}
+    \caption{\label{fig:CodeWarrior-BitIO} Configurarea unui port de intrare / ieșire}
+    \vspace{-10pt}
+\end{wrapfigure}
+
+Cu ajutorul componentei \textit{BitIO} din Processor Expert putem accesa porturi de intrare și iesire ale microcontroller-ului, folosind pinii configurabili ai acestuia. O astfel de componentă este caracterizată de un nume, de un pin al microcontrollerului pe care este mapată, o direcție (portul poate fi de intrare sau de ieșire) și valoarea inițiala, în cazul pinilor configurați pentru ieșire. Cu o astfel de componentă se poate controla foarte ușor un LED, spre exemplu.
 
 \subsection{Porturi de ieșire}
 
-În figura se poate regăsi un exemplu de utilizare al acestei componente.
-
 \begin{wrapfigure}{r}{0.5\textwidth}
-  \vspace{-20pt}
-  \center{\includegraphics[width=0.5 \textwidth]{images/PExOutputIO.png}}
-  \vspace{-15pt}
-  \caption{\label{fig:CodeWarrior-PExOutputIO} Utilizarea unei componente}
-  \vspace{-20pt}
+    \vspace{-60pt}
+    \center{\includegraphics[width=0.5 \textwidth]{images/PExOutputIO.png}}
+    \vspace{-20pt}
+    \caption{\label{fig:CodeWarrior-PExOutputIO} Utilizarea unei componente}
+    \vspace{-10pt}
 \end{wrapfigure}
+
+În figura \ref{fig:CodeWarrior-PExOutputIO} se poate regăsi un exemplu de utilizare al acestei componente. După cum vă puteți da seama, \textit{Init. direction} vine s[ specifice tipul portului, iar \textit{Init. value} valoarea inițială a acestuia.
 
 Următoarele metode sunt puse la dispoziție pentru un programator în vederea controlării unui astfel de port:
 \begin{description}
@@ -30,6 +31,8 @@ Următoarele metode sunt puse la dispoziție pentru un programator în vederea c
     \item[void PutVal(bool Val)] Metoda permite setarea valorii de ieșire pe un pin de ieșire.
     \item[void SetDir(bool Dir)] Setează direcția unui pin. Dacă parametrul are valoarea FALSE, pin-ul este marcat ca fiind pin de intrare (un buton, spre exemplu)ș iar dacă are valoarea TRUE, atunci el devine pin de ieșire.
 \end{description}
+
+De asemenea, mai jos avem și un exemplu simplu de utilizare al acestei componente:
 
 \lstinputlisting[caption=Exemplu de utilizare a unui BitIO, style=customc]{sources/exampleBitIO.lst}
 
@@ -41,19 +44,23 @@ Următoarele metode sunt puse la dispoziție pentru un programator în vederea c
     \item[bool GetVal(void)] Întoarce valoarea pinului de intrare: FALSE pentru "0", respectiv TRUE pentru "1". În cazul unui buton, obținerea valorii "0" înseamnă că butonul este apăsat.
 \end{description}
 
+Citirea valorii unui port de intrare, se poate face într-o buclă infinită, așa cum arată exemplul următor:
+
 \lstinputlisting[caption=Citirea stării unui buton în buclă, style=customc]{sources/exampleBitIORead.lst}
+
+\newpage
 
 \subsection{Componenta de așteptare (Wait)}
 
-Processor Expert pune la dispoziție o componentă ce implementează o rutină wait, prin intermediul căreia putem introduce o întârziere în cadrul execuției programului nostru. De exemplu, dacă vrem ca led-ul nostru să se aprindă și să se stingă la fiecare 5 secunde vom apela rutinele definite mai sus, secvențial, folosind ca și pas intermediar această componentă.
-
 \begin{wrapfigure}{l}{0.5\textwidth}
-  \vspace{-20pt}
-  \center{\includegraphics[width=0.5 \textwidth]{images/Wait.png}}
-  \vspace{-15pt}
-  \caption{\label{fig:CodeWarrior-Wait} Configurarea componentei Wait}
-  \vspace{-20pt}
+    \vspace{-25pt}
+    \center{\includegraphics[width=0.5 \textwidth]{images/Wait.png}}
+    \vspace{-20pt}
+    \caption{\label{fig:CodeWarrior-Wait} Configurarea componentei Wait}
+    \vspace{-10pt}
 \end{wrapfigure}
+
+Processor Expert pune la dispoziție o componentă ce implementează o rutină wait, prin intermediul căreia putem introduce o întârziere în cadrul execuției programului nostru. De exemplu, dacă vrem ca led-ul nostru să se aprindă și să se stingă la fiecare 5 secunde vom apela rutinele definite mai sus, secvențial, folosind ca și pas intermediar această componentă. În timp ce ne aflăm în această rutină de așteptare, doar întreruperile mai pot produce ieșirea din rutină.
 
 Mai jos sunt definite și explicate câteva dintre proprietățile acestei componente:
 
@@ -74,7 +81,7 @@ Componenta poate fi folosită prin accesarea metodelor prezentate succint mai jo
     \item[void Waitus(word us)] parametrul specifică câte microsecunde se așteaptă;
 \end{description}
 
-\textit{Notă:} Există două clase de metode pentru componenta Wait. Unele permit specificarea numărului de secunde cât se așteaptă, celelalte operează cu cicli de ceas.
+\textcolor{red}{Notă:} Există două clase de metode pentru componenta Wait. Unele permit specificarea numărului de secunde cât se așteaptă, celelalte operează cu cicli de ceas.
 
 \subsection{Componenta Timer}
 
@@ -88,15 +95,15 @@ Principiul de funcționare a unui \textit{Timer} poate fi descris în linii mari
     \item La fiecare incrementare a TCNT are loc o comparație între acest registru și o valoare stocată într-un alt registru - numit registru comparator. Valoarea din registrul comparator poate fi încărcată de către programator prin scrierea lui. Dacă are loc egalitatea se generează o întrerupere, în caz contrar incrementarea continuă.
 \end{enumerate}
 
-Timerele sunt prevăzute cu mai multe canale astfel încât se pot desfășura diferite număratori în paralel. Vă invităm să vă documentați asupra numărului de timere și de canale pe care placa de dezvoltare FRDM-KL25Z le pune la dispoziție, pentru că aceasta este placa pe care veți dezvolta aplicația. De asemenea, timerele pot funcționa și în moduri PWM, astfel încât să genereze pe un pin de ieșire un semnal. Mai multe detalii veți afla în paragrafele următoare.
-
 \begin{wrapfigure}{r}{0.5\textwidth}
-  \vspace{-20pt}
-  \center{\includegraphics[width=0.5 \textwidth]{images/Timer.png}}
-  \vspace{-15pt}
-  \caption{\label{fig:CodeWarrior-Timer} Configurarea unui timer}
-  \vspace{-20pt}
+    \vspace{-30pt}
+    \center{\includegraphics[width=0.5 \textwidth]{images/Timer.png}}
+    \vspace{-20pt}
+    \caption{\label{fig:CodeWarrior-Timer} Configurarea unui timer}
+    \vspace{-10pt}
 \end{wrapfigure}
+
+Timerele sunt prevăzute cu mai multe canale astfel încât se pot desfășura diferite număratori în paralel. Vă invităm să vă documentați asupra numărului de timere și de canale pe care placa de dezvoltare FRDM-KL25Z le pune la dispoziție, pentru că aceasta este placa pe care veți dezvolta aplicația. De asemenea, timerele pot funcționa și în moduri PWM, astfel încât să genereze pe un pin de ieșire un semnal. Mai multe detalii veți afla în paragrafele următoare.
 
 Proprietăți ale componentei:
 
@@ -109,9 +116,11 @@ Proprietăți ale componentei:
 Metode de interfațare:
 
 \begin{description}
-    \item[$LLD_TError$ ResetCounter(LDD\_TDeviceData *DeviceDataPtr)] inițializează la 0 (resetează) counter-ul. În cazul proiectului nostru, parametrul \textit{DeviceDataPtr} poate fi setat la \textit{NULL}. Funcția întoarce ERR\_OK dacă totul a decurs bine și ERR\_SPEED în caz de eroare. 
+    \item[$LLD\_Error$ ResetCounter(LDD\_TDeviceData *DeviceDataPtr)] inițializează la 0 (resetează) counter-ul. În cazul proiectului nostru, parametrul \textit{DeviceDataPtr} poate fi setat la \textit{NULL}. Funcția întoarce ERR\_OK dacă totul a decurs bine și ERR\_SPEED în caz de eroare. 
     \item[TValueType GetCounterValue(LDD\_TDeviceData *DeviceDataPtr)] această funcție returnează valoarea registrului contor (numărul de pulsuri de ceas înregistrate de la ultima operație de \textit{Reset}). În cazul proiectului nostru, parametrul \textit{DeviceDataPtr} poate fi setat pe NULL.
 \end{description}
+
+Iată și un exemplu simplu de utilizare:
 
 \lstinputlisting[caption=Utilizarea unui Timer, style=customc]{sources/exampleTimer.lst}
 
@@ -132,11 +141,11 @@ Factorul de umplere se exprimă în procente și reprezintă cât la sută din p
 \subsubsection{Modificarea turației unui motor}
 
 \begin{wrapfigure}{r}{0.3\textwidth}
-  \vspace{-20pt}
-  \center{\includegraphics[width=0.3 \textwidth]{images/ResistenceMethod.png}}
-  \vspace{-15pt}
-  \caption{\label{fig:CodeWarrior-ResistenceMethod} Controlarea unui motor folosind o rezistență}
-  \vspace{-20pt}
+    \vspace{-20pt}
+    \center{\includegraphics[width=0.3 \textwidth]{images/ResistenceMethod.png}}
+    \vspace{-15pt}
+    \caption{\label{fig:CodeWarrior-ResistenceMethod} Controlarea unui motor folosind o rezistență}
+    \vspace{-10pt}
 \end{wrapfigure}
 
 Să presupunem că avem un motor ce funcționează la o anumită tensiune, în curent continuu. Aplicându-i acea tensiune, motorul va funcționa la o anumită turație. Ce facem dacă vrem să-i modificăm turația? O variantă este să folosim roți dințate, dar dacă am vrea să-l controlam prin metode electrice? Cea mai simpla (și ineficientă) formă de a controla turația unui motor în curent continuu este folosirea unei rezistențe. Este ineficientă deoarece multă energie este pierdută, transformându-se în căldură.
@@ -144,28 +153,28 @@ Să presupunem că avem un motor ce funcționează la o anumită tensiune, în c
 Dacă înlocuim rezistența cu un tranzistor, putem controla turația (viteza) motorului aplicând în baza tranzistorului un semnal - cât timp semnalul este "high", tranzistorul închide circuitul motorului către masă. Când semnalul din baza tranzistorului este pe "low", prin motor nu trece curent. Pierderi de putere apar acum (față de exemplul anterior, în care foloseam o rezistență) doar la trecerea între semnalul "high" și cel "coborât" - iar timpul petrecut în aceste faze tranzitorii este foarte scurt.
 
 \begin{wrapfigure}{r}{0.3\textwidth}
-  \vspace{-20pt}
-  \center{\includegraphics[width=0.3 \textwidth]{images/TransistorMethod.png}}
-  \vspace{-15pt}
-  \caption{\label{fig:CodeWarrior-TransistorMethod} Controlarea unui motor folosind un tranzistor}
-  \vspace{-20pt}
+    \vspace{-60pt}
+    \center{\includegraphics[width=0.3 \textwidth]{images/TransistorMethod.png}}
+     \vspace{-15pt}
+    \caption{\label{fig:CodeWarrior-TransistorMethod} Controlarea unui motor folosind un tranzistor}
+    \vspace{-10pt}
 \end{wrapfigure}
 
 Motorul are o anumită inerție, astfel încât nu pornește sau se oprește brusc. De aceea, controlarea tranzistorului printr-un semnal drepunghiular cu o frecvență suficient de mare (semnificativ mai mare decât timpul de răspuns al motorului) nu produce "smucituri" în funcționarea motorului. În același mod putem controla intensitatea luminii generate de un led. Ca și o curiozitate, dacă folosim în baza tranzistorului o frecvență în spectrul auzului uman, vom sfârși prin a auzi un bazâit. De aceea, dacă este posibil, e bine ca frecvența folosită să fie peste 20 kHz. Și nu uitați de câini, care aud la frecvențe și mai mari de 20 kHz!
 
-\subsubsection{Generarea unui semnal PWM cu circuite digitale}
+\subsubsection{Generarea unui semnal PWM în mediu digital}
 
-Majoritatea microcontrollerelor pot genera semnale PWM (pe un pin de ieșire) folosind un numărător ce este incrementat automat cu o anumita cadență până ajunge la o anumită valoare - când este resetat și procesul se reia. Într-o astfel de perioadă, semnalul pe pinul de ieșire este "low" (sau "high") până când numărătorul ajunge la o valoare și apoi este comutat în cealaltă stare. În acest fel creăm un semnal dreptunghiular.
-
-\subsubsection{Processor Expert și generarea de semnal PWM}
+Majoritatea microcontrollerelor pot genera semnale PWM (pe un pin de ieșire) folosind un numărător ce este incrementat automat cu o anumita cadență până ajunge la o anumită valoare - când este resetat și procesul se reia. Într-o astfel de perioadă, semnalul pe pinul de ieșire este "low" (sau "high") până când numărătorul ajunge la o valoare și apoi este comutat în cealaltă stare. În acest fel creăm un semnal dreptunghiular, cu care vom controla motorul.
 
 \begin{wrapfigure}{r}{0.5\textwidth}
-  \vspace{-20pt}
-  \center{\includegraphics[width=0.5 \textwidth]{images/PExPWM.png}}
-  \vspace{-15pt}
-  \caption{\label{fig:CodeWarrior-PExPWM} Configurarea unei componente de tip PWM}
-  \vspace{-20pt}
+    \vspace{-20pt}
+    \center{\includegraphics[width=0.5 \textwidth]{images/PExPWM.png}}
+    \vspace{-15pt}
+    \caption{\label{fig:CodeWarrior-PExPWM} Configurarea unei componente de tip PWM}
+    \vspace{-30pt}
 \end{wrapfigure}
+
+\subsubsection{Processor Expert și generarea de semnal PWM}
 
 Proprietăți ale componentei:
 
@@ -178,15 +187,17 @@ Proprietăți ale componentei:
     \item[Initialization] specifică dacă la inițializare / resetare componenta este sau nu activată. Dacă nu este activată, ieșirea pe pin este setată la valoarea definită prin \textit{"Initial Polarity"}. În acest caz, pentru a o activa programatic, trebuie folosită metoda \textit{Enable}; 
 \end{description}
 
-\textit{Notă:} Pentru modificarea programatică a duty cycle-ului, Proccesor Expert pune la dispoziție mai multe metode, noi folosind \textbf{void SetRatio16(word ratio)}.
+\textcolor{red}{Notă:} Pentru modificarea programatică a duty cycle-ului, Proccesor Expert pune la dispoziție mai multe metode, noi folosind \textbf{void SetRatio16(word ratio)}.
 
 Metode de interfațare:
 
 \begin{description}
-    \item[byte Enable(void), byte Disable(void)] aceste metode pornesc / opresc componenta (generarea de semnal). Valoarea întoarsă poate fi ERR\_OK sau ERR\_SPEED.
+    \item[byte Enable / Disable (void)] metodele pornesc / opresc componenta (generarea de semnal). Valoarea întoarsă poate fi ERR\_OK sau ERR\_SPEED.
     \item[byte SetRatio16(word ratio)] aceasta metodă setează un nou duty cycle pentru componentă. Ratio este o valoare unsigned, cuprinsă între 0x0 și 0xffff (65535), proporțională cu procentul 0 - 100\%. Valoarea întoarsă poate fi ERR\_OK sau ERR\_SPEED.
     \item[byte SetValue(void), byte ClrValue(void)] permit setarea directă a pinului de ieșire atunci când componenta este oprită (folosind metoda \textit{Disable}, în prealabil). Valoarea întoarsă poate fi ERR\_OK, ERR\_SPEED sau ERR\_ENABLE.
 \end{description}
+
+O dată instanțiată o componentă de acest tip, funcțiile oferite pot folosite precum în exemplul de cod sursă, de mai jos:
 
 \lstinputlisting[caption=Utilizarea funcțiilor puse la dispozție de componenta PWM, style=customc]{sources/examplePWM.lst}
 
