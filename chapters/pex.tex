@@ -1,5 +1,7 @@
 \chapter{Componente Processor Expert}
 
+\label{sec:ProcessorExpert}
+
 \section{Porturi de intrare și ieșire}
 
 \begin{wrapfigure}{l}{0.5\textwidth}
@@ -22,14 +24,14 @@ Cu ajutorul componentei \textit{BitIO} din Processor Expert putem accesa porturi
     \vspace{-10pt}
 \end{wrapfigure}
 
-În figura \ref{fig:CodeWarrior-PExOutputIO} se poate regăsi un exemplu de utilizare al acestei componente. După cum vă puteți da seama, \textit{Init. direction} vine s[ specifice tipul portului, iar \textit{Init. value} valoarea inițială a acestuia.
+În figura \ref{fig:CodeWarrior-PExOutputIO} se poate regăsi un exemplu de utilizare al acestei componente. După cum vă puteți da seama, \textit{Init. direction} vine să specifice tipul portului, iar \textit{Init. value} valoarea inițială a acestuia.
 
 Următoarele metode sunt puse la dispoziție pentru un programator în vederea controlării unui astfel de port:
 \begin{description}
     \item[void SetVal(void), void ClrVal(void)] Acestea permit setarea portului de ieșire la valoarea \textit{"high"}, respectiv \textit{"low"}. 
     \item[void NegVal(void)] Metoda permite negarea unei valori setate ca output. Din 0 se poate se poate trece în 1 și invers. Cu ajutorul acestei metode se poate face un led, de exemplu, să blinkăie.
     \item[void PutVal(bool Val)] Metoda permite setarea valorii de ieșire pe un pin de ieșire.
-    \item[void SetDir(bool Dir)] Setează direcția unui pin. Dacă parametrul are valoarea FALSE, pin-ul este marcat ca fiind pin de intrare (un buton, spre exemplu)ș iar dacă are valoarea TRUE, atunci el devine pin de ieșire.
+    \item[void SetDir(bool Dir)] Setează direcția unui pin. Dacă parametrul are valoarea FALSE, pin-ul este marcat ca fiind pin de intrare (un buton, spre exemplu), iar dacă are valoarea TRUE, atunci el devine pin de ieșire.
 \end{description}
 
 De asemenea, mai jos avem și un exemplu simplu de utilizare al acestei componente:
@@ -187,7 +189,7 @@ Proprietăți ale componentei:
     \item[Initialization] specifică dacă la inițializare / resetare componenta este sau nu activată. Dacă nu este activată, ieșirea pe pin este setată la valoarea definită prin \textit{"Initial Polarity"}. În acest caz, pentru a o activa programatic, trebuie folosită metoda \textit{Enable}; 
 \end{description}
 
-\textcolor{red}{Notă:} Pentru modificarea programatică a duty cycle-ului, Proccesor Expert pune la dispoziție mai multe metode, noi folosind \textbf{void SetRatio16(word ratio)}.
+\textcolor{red}{Notă:} Pentru modificarea programatică a duty cycle-ului, Processor Expert pune la dispoziție mai multe metode, noi folosind \textbf{void SetRatio16(word ratio)}.
 
 Metode de interfațare:
 
@@ -197,7 +199,7 @@ Metode de interfațare:
     \item[byte SetValue(void), byte ClrValue(void)] permit setarea directă a pinului de ieșire atunci când componenta este oprită (folosind metoda \textit{Disable}, în prealabil). Valoarea întoarsă poate fi ERR\_OK, ERR\_SPEED sau ERR\_ENABLE.
 \end{description}
 
-O dată instanțiată o componentă de acest tip, funcțiile oferite pot folosite precum în exemplul de cod sursă, de mai jos:
+O dată instanțiată o componentă de acest tip, funcțiile oferite pot fi folosite așa cum sunt utilizate mai jos:
 
 \lstinputlisting[caption=Utilizarea funcțiilor puse la dispozție de componenta PWM, style=customc]{sources/examplePWM.lst}
 

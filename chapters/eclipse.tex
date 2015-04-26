@@ -8,7 +8,7 @@ Pentru programarea unui microcontroller se pot folosi diverse metode, dintre car
 
 \section{Programarea microcontroller-ului folosind OpenSDA}
 
-OpenSDA este un firmware ce rulează pe un core independent, și anume un K20DX (produs tot de Freescale) și care pune la dispoziție bootloader-ul de care avem nevoie pentru a putea programa microcontroller-ul. Acest firmware se poate descărca de la adresa\footnote{\myhref{http://www.pemicro.com/opensda/}{http://www.pemicro.com/opensda/}}, el necesitând și programarea sa pe placă. Bineînțeles, în cazul plăcilor de dezvoltare pe care vi le punem la dispoziție, vom realiza noi această parte, plăcile având deja ultima versiune a firmware OpenSDA. Totuși dorim să vă prezentăm în continuare și cum puteți face această lucru voi înșiși acasă. Pașii pe care trebuie să îi urmați ar fi următorii:
+OpenSDA este un firmware ce rulează pe un core independent, și anume un K20DX (produs tot de Freescale) și care pune la dispoziție bootloader-ul de care avem nevoie pentru a putea programa microcontroller-ul. Acest firmware se poate descărca de la adresa\footnote{\myhref{http://www.pemicro.com/opensda/}{http://www.pemicro.com/opensda/}}, el necesitând și programarea sa pe placă. Bineînțeles, în cazul plăcilor de dezvoltare pe care vi le punem la dispoziție, vom realiza noi această parte, plăcile având deja ultima versiune a firmware OpenSDA. Totuși dorim să vă prezentăm în continuare și cum puteți face acest lucru voi înșiși acasă. Pașii pe care trebuie să îi urmați ar fi următorii:
 
 \begin{wrapfigure}{r}{0.4\textwidth}
     \vspace{-25pt}
@@ -20,15 +20,15 @@ OpenSDA este un firmware ce rulează pe un core independent, și anume un K20DX 
 
 \begin{enumerate}
     \item Primul pas constă în intrarea în modulul \textit{Bootloader}, prin apăsarea butonului de \textit{Reset} în timp ce placa este alimentată de la sursă de tensiune. Mare atenție, pentru că alimentarea plăcii trebuie să se facă în timp ce acest buton este ținut apăsat.
-    \item Confirmarea hardware pentru faptul că totul este bine și sunteți în acest mod, este oferită de un leg verde ce se află lângă modulul OpenSDA de pe Freedom board.
+    \item Confirmarea hardware pentru faptul că totul este bine și sunteți în acest mod, este oferită de un led verde ce se află lângă modulul OpenSDA de pe Freedom board.
     \item În acest moment, dacă vă conectați calculatorul personal cu un cablu USB la Freedom board, sistemul de operare ar trebui să vă recunoască un nou device în sistem, așa cum este ilustrat în figura \ref{fig:CodeWarrior-OSDevice}.
     \item Folosind o simplă operație de tip drag \& drop se pot copia fișierele cu extensia SDA (ce au fost descărcate anterior) în cadrul device-ul ce se află în modul Bootloader. Procesul este asemănător cu cel al copierii unui fișier de pe o partiție pe alta.
     \item Un alt reset al plăcii (prin deconectarea și reconectarea la o sursă de alimentare) va produce începerea rulării fișierelor SDA încărcate la pasul anterior.
 \end{enumerate}
 
-După ce ați urmat toți pașii de mai sus, veți putea utiliza CodeWarrior fără probleme în programarea și depanarea programelor voastre. Aveți totuși grijă să creați un proiect având stabilită ca și conexiunea OpenSDA (și nu Segger spre exenmplu) pentru a-i putea specifica tool-ului modul de programare. Altfel, riscați să nu puteți programa placa!
+După ce ați urmat toți pașii de mai sus, veți putea utiliza CodeWarrior fără probleme în programarea și depanarea programelor voastre. Aveți totuși grijă să creați un proiect având stabilită ca și conexiunea OpenSDA (și nu Segger, spre exemplu) pentru a-i putea specifica tool-ului modul de programare. Altfel, riscați să nu puteți programa placa!
 
-Ajunți în acest punct, putem să începem să ne familarizăm cu mediul de dezvoltare și mai ales interfața pe care o oferă. Ați mai utilizat un IDE (\textit{Integrated Development Environment}) până acum?
+Ajunși în acest punct, putem să începem să ne obișnuim cu mediul de dezvoltare și mai ales interfața pe care o oferă. Ați mai utilizat un IDE (\textit{Integrated Development Environment}) până acum?
 
 \section{Vedere de ansamblu asupra utilitarului}
 
@@ -54,7 +54,7 @@ Figura \ref{fig:CodeWarrior-VedereDeAnsamblu} (de pe pagina următoare) ilustrea
     \vspace{-10pt}
 \end{wrapfigure}
 
-Pentru a compila proiectul, după ce în prealabil s-a generat codul folosind ProcessorExpert și voi v-ați scris codul vostru sursă, puteti folosi butonul din figura \ref{fig:CodeWarrior-CompilareProiect} sau de ce nu puteți folosi meniul principal și anume opțiunea \textit{Project $\rightarrow$ Build Project}. Indiferent de varianta aleasă rezultatul va fi același.
+Pentru a compila proiectul, după ce în prealabil s-a generat codul folosind ProcessorExpert (despre acest utilitar veți afla mai multe în capitolul ~\textit{\nameref{sec:ProcessorExpert}}) și voi v-ați scris codul vostru sursă, puteti folosi butonul din figura \ref{fig:CodeWarrior-CompilareProiect} sau de ce nu puteți folosi meniul principal și anume opțiunea \textit{Project $\rightarrow$ Build Project}. Indiferent de varianta aleasă rezultatul va fi același.
 
 \begin{wrapfigure}{l}{0.5\textwidth}
     \vspace{-20pt}
@@ -90,7 +90,7 @@ Dacă totul a decurs cu bine, trebuie să nu avem erori în fereastra \textit{"P
 
 \section{Debugging}
 
-Până să ajungeți la o versiune funcțională, pe care să o puteți prezenta la concurs sau în cercul vostru de prieteni, va fi ceva de munca. Lucrurile vor fi abordate pas cu pas, va trebui de multe ori să faceți un debugging avansat pentru a înțelege ce e greșit în algoritmul vostru de robotul nu face ceea ce doriți voi să facă. În cazul în care vreți să puteți executa programul în modul debug (pas-cu-pas), puteți folosi butonul exemplificat în figura \ref{fig:CodeWarrior-Debugging}. Nu uitați, pentru a folosi acest mod, robotul trebuie să rămână conectat la laptop printr-un cablu. Ca alternativa - recomandată, de altfel – puteți folosi interfața serială pentru a trimite date dinspre robot spre laptop.
+Până să ajungeți la o versiune funcțională, pe care să o puteți prezenta la concurs sau în cercul vostru de prieteni, va fi ceva de munca. Lucrurile vor fi abordate pas cu pas, va trebui de multe ori să faceți un debugging avansat pentru a înțelege ce e greșit în algoritmul vostru de robotul nu face ceea ce doriți voi să facă. În cazul în care vreți să puteți executa programul în modul debug (pas-cu-pas), puteți folosi butonul exemplificat în figura \ref{fig:CodeWarrior-Debugging}. Nu uitați, pentru a folosi acest mod, robotul trebuie să rămână conectat la laptop printr-un cablu. Ca alternativa - recomandată, de altfel – puteți folosi interfața serială pentru a trimite date dinspre robot spre laptop (mai multe detalii despre această interfață puteți citi la capitolul \textit{~\nameref{sec:InterfataSeriala}})
 
 \begin{wrapfigure}{l}{0.5\textwidth}
     \vspace{-20pt}
@@ -104,11 +104,11 @@ Folosirea acestei interfețe seriale, vă va permite să faceți debugging folos
 
 \section{Processor Expert}
 
-Processor Expert este un sistem de dezvoltare pus la dispozție de firma \textit{Freescale Semiconductor} ce poate regăsit deja instalat în \textit{odeWarrior for MCU}, prin intermediul căruia se pot crea și configura componente software ce generează cod sursă pentru microcontrollere produse de \textit{Freescale}. O astfel de componentă poate fi un driver, un algoritm sau o colecție de funcții software ce deservesc un obiectiv. O componentă poate fi, de exemplu, un driver ce permite accesul facil la pinii de intrare / ieșire puși la dispoziție de un microcontroller.
+Processor Expert este un sistem de dezvoltare pus la dispoziție de firma \textit{Freescale Semiconductor} ce vine o dată cu utilitarul \textit{CodeWarrior for MCU}, prin intermediul căruia se pot crea și configura componente software ce generează cod sursă pentru microcontrollere produse de \textit{Freescale}. O astfel de componentă poate fi un driver (adică un soft ce asigură interacțiunea cu o unitatea hardware), un algoritm sau o colecție de funcții software ce deservesc un obiectiv. O componentă poate fi, de exemplu, un driver ce permite accesul facil la pinii de intrare / ieșire puși la dispoziție de un microcontroller.
 
-Folosirea Processor Expert înleșneste lucrul cu platforma hardware prin abstractizarea detaliilor de la nivelul low-level. Putem spune că avem de-a face cu o programare vizuală, în care este mai mult folosit mouse-ul decât tastatura. Noi, ca și programatori, vom avea mai multe de configurat setări și opțiuni pentru respectivul modul, pentru că mai apoi, codul să fie generat automat în funcție de inputul pe care l-am specificat. 
+Folosirea Processor Expert înleșneste lucrul cu platforma hardware prin abstractizarea detaliilor de la nivelul low-level. Putem spune că avem de-a face cu o programare vizuală, în care este mai mult folosit mouse-ul decât tastatura. Noi, ca și programatori, vom avea mai multe setări și opțiuni de configurat pentru respectivul modul, pentru ca mai apoi, codul să fie generat automat în funcție de inputul pe care l-am specificat. 
 
-În cadrul acestui concurs, vom folosi Processor Expert. De ce? Răspunsul este foarte simplu. Cu ajutorul lui putem adăuga și configura componente, apoi genera cod sursă C pentru aceste componente. Codul generat va coexista cu codul C din proiectul nostru. Rezultatul acestei combinații de cod C scris manual și cel generat de \textit{Processor Expert} va fi compilat într-un singur executabil ce va fi folosit pentru construirea unui \textit{Line Follower}.
+În cadrul acestui concurs, vom folosi Processor Expert. De ce? Răspunsul este foarte simplu. Cu ajutorul lui putem adăuga și configura componente, apoi genera cod sursă C pentru aceste componente. Pornind de la codul generat de Processor Expert, voi trebuie să adăugați cod scris de voi pentru a implementa algoritmii care să conduca și să ajute robotul să urmărească linia.
 
 \subsection{Accesarea utilitarului}
 
@@ -136,9 +136,9 @@ După deschiderea proiectului în \textit{CodeWarrior for MCU}, în cazul în ca
 
 \subsection{Generarea de cod sursă}
 
-După ce toate componentele necesare au fost adăugate și setate corect (sau după modificarea setaăilor unor componente) trebuie lansată o comandă prin care Processor Expert va fi înstiințat de faptul că trebuie să genereze codul sursă pentru componentele existente în proiect. Acest proces de înștiințare are loc doar prin apăsarea unui singur buton și anume - \textit{"Generate Processor Expert Code"}. După apăsarea butonului, utilitarul vă va rugă să aveți răbdare...
+După ce toate componentele necesare au fost adăugate și setate corect (sau după modificarea setărilor unor componente) trebuie lansată o comandă prin care Processor Expert va fi înstiințat de faptul că trebuie să genereze codul sursă pentru componentele existente în proiect. Acest proces de înștiințare are loc doar prin apăsarea unui singur buton și anume - \textit{"Generate Processor Expert Code"}. După apăsarea butonului, utilitarul vă va ruga să aveți răbdare...
 
-\textcolor{red}{Notă:} Codul generat de Processor Expert conține zone ca cele de mai jos, rezervate special pentru codul pe care voi îl veți scrie. Nu încercați ăa modificați sau să scrieți cod în afara acestor zone, deoarece o noua generare a codului Processor Expert vă va șterge tot ce ați adăugat. Iar asta nu este foarte plăcut, pentru că va trebui să o luați de la capăt cu acele modificări manuale.
+\textcolor{red}{Notă:} Codul generat de Processor Expert conține zone ca cele de mai jos, rezervate special pentru codul pe care voi îl veți scrie. Nu încercați să modificați sau să scrieți cod în afara acestor zone, deoarece o noua generare a codului Processor Expert vă va șterge tot ce ați adăugat. Iar asta nu este foarte plăcut, pentru că va trebui să o luați de la capăt cu acele modificări manuale.
 
 \newpage
 

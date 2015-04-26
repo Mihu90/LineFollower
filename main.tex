@@ -24,7 +24,15 @@
 \usepackage{mathtools}
 
 % Folosim un pachet pentru antet si subsol
-\usepackage{fancyhdr}
+% Micsoreaza fontul in fancyhdr pentru a nu mai exista overlay-uri
+\usepackage{fancyhdr, blindtext}
+\newcommand{\changefont}{%
+    \fontsize{9}{11}\selectfont
+}
+\fancyhf{}
+\fancyhead[LE,RO]{\changefont \slshape \rightmark}
+\fancyhead[RE,LO]{\changefont \slshape \leftmark}
+\fancyfoot[C]{\changefont \thepage}
 \pagestyle{fancy}
 
 % Pachetele necesare pentru listarea de cod sursa
@@ -89,7 +97,7 @@
 }
 \end{figure}
 \noindent{\rule{8cm}{0.4pt}}\\[0.3cm]
-\textsc{\Large STEM Innovation Champ}\\[5.0cm]
+\textsc{\Large STEM Innovation Camp}\\[5.0cm]
 
 {\Huge DOCUMENTAȚIE}\\[0.4cm]
 \textsc{\Large Utilă pentru realizarea unui robot de tip\\ LINE FOLLOWER}\\[5.0cm]
@@ -172,6 +180,9 @@
 
 % Sectiunea de referinte va fi mereu pe o alta pagina
 \newpage
+
+% Avem si o scurta sectiune cu anexe.
+\input{chapters/appendix.tex}
 
 % Dezvoltarea unei aplicatii in CodeWarrior for MCU
 \input{chapters/bibliography.tex}

@@ -2,7 +2,9 @@
 
 \section{Interfața serială}
 
-Este foarte probabil ca mulți dintre voi să fi depanat până acum un program software doar prin folosirea metodei clasice și probabil cea mai simplă și intuitivă - folosirea \textit{printf-urilor} (limbajul C) sau a \textit{cout-urilor} dacă sunteți familarizați cu C++. Dacă în cadrul unei aplicați software clasice, ieșirea programului este redată pe un monitor, în cadrul unei aplicații embedded nu avem un astfel de dispozitiv. Cel mult vom avea un LCD. În acest caz, ne propunem să trimitem aceste date către un calculator persoanal prin care le-am putea accesa cu ușurință. Soluția este folosirea unei interfețe seriale. Configurația oferită de către proiectul inițial (folosind \textit{Processor Expert}) are deja configurat[ interfața serială de pe microcontroller.
+\label{sec:InterfataSeriala}
+
+Este foarte probabil ca mulți dintre voi să fi depanat până acum un program software doar prin folosirea metodei clasice și probabil cea mai simplă și intuitivă - folosirea \textit{printf-urilor} (limbajul C) sau a \textit{cout-urilor} dacă sunteți familarizați cu C++. Dacă în cadrul unei aplicații software clasice, ieșirea programului este redată pe un monitor, în cadrul unei aplicații embedded nu avem un astfel de dispozitiv. Cel mult vom avea un LCD. În acest caz, ne propunem să trimitem aceste date către un calculator personal prin care le-am putea accesa cu ușurință. Soluția este folosirea unei interfețe seriale. Configurația oferită de către proiectul inițial (folosind \textit{Processor Expert}) are deja inițializată interfața serială de pe microcontroller.
 
 Aceasta poate fi folosita din programul dezvoltat pe microcontroller prin apelul următoarelor funcții:
 
@@ -22,7 +24,7 @@ Aceasta poate fi folosita din programul dezvoltat pe microcontroller prin apelul
 
 În mediul de dezvoltare (Eclipse) se poate folosi un terminal pentru a recepționa datele transmise de către microcontroller prin interfața serială. Acest terminal va trebui accesat ca în figura.
 
-Terminalul va apărea în partea de jos a ecranului în taburile de console. Pentru o comunicare corectă (pentru că terminalul să înțeleagă corect datele trimise), terminalul trebuie configurat după cum urmează:
+Terminalul va apărea în partea de jos a ecranului în taburile de console. Pentru o comunicare corectă (pentru ca terminalul să înțeleagă corect datele trimise), terminalul trebuie configurat după cum urmează:
 
 Portul selectat trebuie să fie portul pe care s-a atașat \textit{OpenSDA} (în Windows, poate fi verificat în \textit{"Device Manager"}, mai exact în \textit{"Ports (COM \& LPT)"}). După configurare, terminalul va trebui conectat la portul cu care comunică. Aceasta se face prin simpla apăsare a butonului de conectare (primul din lista de butoane de tip iconițe ale ferestrei "Terminal" ce apare în partea de jos a Eclipse-ului).
 
@@ -56,8 +58,10 @@ Pașii necesari pentru obținerea unei iterații de date despre mediu, de la sen
     \item Activăm diodele infraroșii - IR\_LED.
     \item Configurăm pinii digitali (A1, A3, D11, A0, A2, D5) ca ieșiri și le setăm pe valoarea 1.
     \item Așteptăm o perioadă de timp astfel încât condensatorul să se încarce - 50 µs este suficient.
-    \item Configurăm pinii de la pasul 2 ca intrări digitale, de această dată.
-    \item Resetăm timer-ul \textit{CountTimer}. După inițializare acestă funcționează în continuu astfel avem nevoie de o resetare a timpului măsurat până atunci – nu se știe starea în care va fi găsit. Timer-ul măsoară perioade de timp în multipli de 6.10 µs (163.84kHz).
-    \item Măsurăm timpul necesar ca tensiunea de pe condensator să comute intrările în valoarea 0. După o perioadă de câteva µs, senzorii pot fi considerați ca au toți valoarea 0. Acest mecanism ne permite să reducem perioada de așteptare între citiri, după un anumit prag (perioadă) nu se mai obține informatii utile de la senzori.
+    \item Configurăm pinii de la pasul 2 ca intrări digitale (adică pini de input), de această dată.
+    \item Resetăm timer-ul \textit{CountTimer}. După inițializare acesta va funcționa în mod continuu și va număra la infinit, motiv pentru care avem nevoie de o resetare a acestuia la intervale periodice de timp. Resetarea va asigura faptul că numărătoarea începe de la 0. Timer-ul măsoară perioade de timp în multipli de 6.10 µs (163.84kHz).
+    \item Măsurăm timpul necesar ca tensiunea de pe condensator să comute intrările în valoarea 0. După o perioadă de câteva µs, senzorii pot fi considerați ca au toți valoarea 0. Acest mecanism ne permite să reducem perioada de așteptare între citiri, după un anumit prag (perioadă) nu se mai obțin informatii utile de la senzori.
     \item Dezactivăm diodele infraroșii.
 \end{enumerate}
+
+Toate modulele prezentate pe scurt în cadrul acestui capitol, se pot interconecta folosind schema din Figura 1 de la secțiunea \textit{~\nameref{sec:AnexaInterconectare}}, anexată la acest document.
