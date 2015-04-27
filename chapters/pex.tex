@@ -62,7 +62,8 @@ Citirea valorii unui port de intrare, se poate face într-o buclă infinită, a�
     \vspace{-10pt}
 \end{wrapfigure}
 
-Processor Expert pune la dispoziție o componentă ce implementează o rutină wait, prin intermediul căreia putem introduce o întârziere în cadrul execuției programului nostru. De exemplu, dacă vrem ca led-ul nostru să se aprindă și să se stingă la fiecare 5 secunde vom apela rutinele definite mai sus, secvențial, folosind ca și pas intermediar această componentă. În timp ce ne aflăm în această rutină de așteptare, doar întreruperile mai pot produce ieșirea din rutină.
+Processor Expert pune la dispoziție o componentă ce implementează o rutină wait, prin intermediul căreia putem introduce o întârziere în cadrul execuției programului nostru. De exemplu, dacă vrem ca led-ul nostru să se aprindă și să se stingă la fiecare 5 secunde vom apela rutinele definite mai sus, secvențial, folosind ca și pas intermediar această componentă. În timp ce ne aflăm în această rutină de așteptare, doar întreruperile mai pot produce ieșirea din rutină. Ca și o mică paranteză, o întrerupere reprezintă un semnal sincron sau asincron de la un periferic ce semnalizează apariția unui
+eveniment care trebuie tratat de către procesor. Tratarea întreruperii are ca efect suspendarea firului normal de execuție al unui program și lansarea în execuție a unei rutine de tratare a întreruperii (mai multe detalii puteți citi aici \cite{interupereBib}).
 
 Mai jos sunt definite și explicate câteva dintre proprietățile acestei componente:
 
@@ -73,7 +74,7 @@ Mai jos sunt definite și explicate câteva dintre proprietățile acestei compo
     \item[RTOS] este parametrul prin care componenta este informată dacă un sistem de operare este folosit în sistem (sistem de operare în timp real). În cazul nostru, ar reprezenta un overhead utilizarea unui sistem de operare, având în vedere că acesta ar fi util doar dacă avem o aplicație ce necesită support de multitasking.
 \end{description}
 
-Cum sistemul nostru nu folosește watchdogs, parametrul \textbf{WatchDog} trebuie configurat pe modul dezactivat.
+Cum sistemul nostru nu folosește watchdogs, parametrul \textbf{WatchDog} trebuie configurat pe modul dezactivat. Un circuit watchdog este un circuit hardware concepute pentru a proteja un sistem electronic, în cazul în care ceva nu merge bine, iar sistemul nu poate recupera pe cont propriu (mai multe detalii despre un watchdog puteți găsi aici \cite{watchdogBib}).
 
 Componenta poate fi folosită prin accesarea metodelor prezentate succint mai jos:
 
